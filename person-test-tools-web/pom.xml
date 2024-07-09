@@ -18,34 +18,17 @@
     <dependencies>
         <dependency>
             <groupId>com.person.test.tools</groupId>
-            <artifactId>person-test-tooles-dubbo-consumer</artifactId>
+            <artifactId>person-test-tools-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.person.test.tools</groupId>
-            <artifactId>person-test-tooles-dubbo-provider</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <artifactId>person-test-tools-dubbo-consumer</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <artifactId>asm</artifactId>
-                    <groupId>org.ow2.asm</groupId>
-                </exclusion>
-            </exclusions>
+            <groupId>com.person.test.tools</groupId>
+            <artifactId>person-test-tools-dubbo-provider</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
