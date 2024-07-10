@@ -1,4 +1,4 @@
-package com.person.test.tools.web;
+package com.person.test.tools.web.web;
 
 import com.person.test.tools.dubbo.consumer.DubboConsumer;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +14,7 @@ public class HttpTestControllerApplication {
     @Autowired
     DubboConsumer dubboConsumer;
 
-    @RequestMapping("/test")
+    @RequestMapping("/")
     @ResponseBody
     String test()
     {

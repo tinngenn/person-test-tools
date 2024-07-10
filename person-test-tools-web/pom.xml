@@ -11,6 +11,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>person-test-tools-web</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>person-test-tools-web</name>
     <description>person-test-tools-web</description>
@@ -19,12 +20,10 @@
         <dependency>
             <groupId>com.person.test.tools</groupId>
             <artifactId>person-test-tools-common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.person.test.tools</groupId>
             <artifactId>person-test-tools-dubbo-consumer</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.person.test.tools</groupId>
@@ -50,6 +49,10 @@
         </dependency>
     </dependencies>
     <build>
+        <filters>
+            <!-- 指定配置读取路径 -->
+            <filter>${project.build.outputDirectory}/git.properties</filter>
+        </filters>
         <finalName>${project.parent.artifactId}</finalName>
         <!--属性渲染-->
         <resources>
@@ -64,8 +67,8 @@
                     <include>**/*.p12</include>
                     <include>**/*.png</include>
                 </includes>
-    </resource>
-</resources>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -101,6 +104,18 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <outputDirectory>${basedir}/../target</outputDirectory>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                        <manifestEntries>
+                            <timestamp>${maven.build.timestamp}</timestamp>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.5</version>
@@ -110,6 +125,7 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>pl.project13.maven</groupId>
                 <artifactId>git-commit-id-plugin</artifactId>
@@ -128,7 +144,9 @@
                     <!--若项目打包类型为pom,是否取消构建;默认值:true;-->
                     <skipPoms>false</skipPoms>
                     <!--是否生成"git.properties"文件;默认值:false;-->
-                    <generateGitPropertiesFile>false</generateGitPropertiesFile>
+                    <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                    <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties
+                    </generateGitPropertiesFilename>
                 </configuration>
             </plugin>
         </plugins>

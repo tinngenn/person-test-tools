@@ -48,7 +48,7 @@
         <springboot.version>2.3.11.RELEASE</springboot.version>
         <dubbo.spring.boot.version>2.7.13</dubbo.spring.boot.version>
         <lombok.version>1.18.8</lombok.version>
-        <jetty.http2.version>9.4.43.v20210629</jetty.http2.version>
+        <jetty.http2.version>9.4.44.v20210927</jetty.http2.version>
     </properties>
 
     <dependencyManagement>
@@ -61,6 +61,11 @@
             <dependency>
                 <groupId>com.person.test.tools</groupId>
                 <artifactId>person-test-tools-dubbo-api</artifactId>
+                <version>${person.test.tools.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.person.test.tools</groupId>
+                <artifactId>person-test-tools-dubbo-consumer</artifactId>
                 <version>${person.test.tools.version}</version>
             </dependency>
             <dependency>
@@ -152,6 +157,12 @@
                 <groupId>org.apache.curator</groupId>
                 <artifactId>curator-framework</artifactId>
                 <version>${curator.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>guava</artifactId>
+                        <groupId>com.google.guava</groupId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.apache.curator</groupId>
@@ -190,43 +201,14 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration><!-- 指定该Main Class为全局的唯一入口 -->
-
-                    <mainClass>PersonTestToolsWebApplication</mainClass>
+                    <mainClass>com.person.test.tools.web.PersonTestToolsWebApplication</mainClass>
                     <layout>ZIP</layout>
                 </configuration>
                 <executions>
                     <execution>
                         <goals>
                             <goal>repackage</goal><!--可以把依赖的包都打包到生成的Jar包中-->
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <!--上传源码 -->
-            <plugin>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>2.1</version>
-                <configuration>
-                    <attach>true</attach>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>jar</goal>
                         </goals>
                     </execution>
                 </executions>

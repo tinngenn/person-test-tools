@@ -9,6 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
+    <name>person-test-tools-dubbo-api</name>
     <artifactId>person-test-tools-dubbo-api</artifactId>
 
     <dependencies>
