@@ -92,7 +92,7 @@
                         <nonFilteredFileExtension>xml</nonFilteredFileExtension>
                         <nonFilteredFileExtension>xsl</nonFilteredFileExtension>
                         <nonFilteredFileExtension>properties</nonFilteredFileExtension>
-                        <!--  <nonFilteredFileExtension>html</nonFilteredFileExtension>-->
+                   <!--       <nonFilteredFileExtension>html</nonFilteredFileExtension>-->
                         <nonFilteredFileExtension>gif</nonFilteredFileExtension>
                         <nonFilteredFileExtension>svg</nonFilteredFileExtension>
                         <nonFilteredFileExtension>pdf</nonFilteredFileExtension>
@@ -118,14 +118,13 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5</version>
+                <version>3.8.1</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>pl.project13.maven</groupId>
                 <artifactId>git-commit-id-plugin</artifactId>
